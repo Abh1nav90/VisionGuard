@@ -133,3 +133,6 @@ DeepTech / System-Based AI Project
 This project is developed for academic and research purposes.
 
 ---
+## 🚧 Ongoing Improvements
+- Alert cooldown optimization in progress
+- Sound trigger stabilization pending
