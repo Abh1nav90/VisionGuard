@@ -1,140 +1,181 @@
-# VisionGuard AI
+<div align="center">
+
+# 👁️ VisionGuard AI
 ### Real-Time Pedestrian & Vehicle Detection System
 
----
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Streamlit-FF4B4B?style=for-the-badge)](https://visionguard-dwiz4twnypak6dkqkr96zz.streamlit.app)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-00FFFF?style=for-the-badge)](https://ultralytics.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![License](https://img.shields.io/badge/License-Academic-green?style=for-the-badge)](LICENSE)
 
-## Overview
-VisionGuard AI is a real-time computer vision system designed to detect pedestrians and vehicles from images and video streams using deep learning. The system estimates pedestrian proximity and triggers alerts only when safety thresholds are breached, reducing unnecessary alert noise during continuous video processing.
+**A production-grade computer vision system that detects pedestrians and vehicles in real time, estimates proximity, and triggers smart cooldown-controlled alerts.**
 
----
+[🌐 Live App](https://visionguard-dwiz4twnypak6dkqkr96zz.streamlit.app) · [📖 Documentation](#how-to-run) · [🐛 Report Bug](https://github.com/Vinay-Partap/VisionGuard/issues)
 
-##  Problem Statement
-Pedestrian safety is a critical challenge in urban traffic environments. Traditional driver-assistance systems often fail to provide timely warnings due to poor visibility, blind spots, or delayed human response. There is a need for an automated vision-based system capable of detecting pedestrians in real time and issuing proximity-aware alerts without overwhelming the user.
-
----
-
-##  Solution Overview
-VisionGuard AI uses the YOLO (You Only Look Once) deep learning model to detect objects in real time. The system:
-- Processes images and videos
-- Identifies pedestrians and vehicles
-- Estimates pedestrian distance
-- Generates alerts only when required
-- Prevents alert flooding in video streams
+</div>
 
 ---
 
-## Core Features
-- Real-time pedestrian and vehicle detection
-- Image and video input support
-- Distance-based pedestrian proximity estimation
-- Cooldown-controlled alert system for video streams
-- Detection summary analytics
-- Modular and scalable architecture  
+## 📌 Overview
+
+VisionGuard AI is a **DeepTech / System-Based AI project** built for real-world pedestrian safety monitoring. Using the YOLOv8 deep learning model, the system processes images and video streams to:
+
+- Detect pedestrians and classify them by proximity risk (**HIGH / MEDIUM / LOW**)
+- Trigger audio + visual alerts only when safety thresholds are breached
+- Prevent alert flooding using a cooldown engine
+- Export session data as **CSV reports** for further analysis
+
+> 💡 **Problem it solves:** Traditional driver-assistance systems fail to provide timely warnings due to poor visibility, blind spots, or delayed human response. VisionGuard automates proximity-aware detection in real time.
 
 ---
 
-## System Architecture
-
-```text
-User Input (Image / Video)
-        ↓
-YOLO Object Detection
-        ↓
-Pedestrian Distance Estimation
-        ↓
-Alert Decision Engine (Cooldown Logic)
-        ↓
-Streamlit UI + Detection Summary
-```
----
-
-## Tech Stack
-- **Language:** Python
-- **Deep Learning:** YOLO (Ultralytics)
-- **Computer Vision:** OpenCV
-- **Web Interface:** Streamlit
-- **Numerical Processing:** NumPy
-- **Model Backend:** PyTorch
-
----
-
-## Project Structure
-
-```text
-VisionGuard/
-│── app.py                 # Streamlit application
-│── detector/
-│   ├── yolo_detector.py   # YOLO detection logic
-│   ├── distance.py        # Distance estimation
-│   └── tracker.py         # Object tracking (optional)
-│── utils/
-│   ├── alerts.py          # Alert & cooldown logic
-│   └── summary.py         # Detection summary handling
-│── assets/                # Images & videos for testing
-│── requirements.txt
-│── README.md
-│── .gitignore
-
-```
----
 ## 🚀 Live Demo
-👉 **[VisionGuard AI - Live App](https://visionguard-dwiz4twnypak6dkqkr96zz.streamlit.app)**
 
-##  How to Run the Project
+👉 **[Try VisionGuard AI Live](https://visionguard-dwiz4twnypak6dkqkr96zz.streamlit.app)**
 
-### 1️⃣ Clone the Repository
+Upload any image or video containing pedestrians/vehicles and see real-time detection with risk-level bounding boxes and proximity alerts.
+
+---
+
+## ✨ Features
+
+| Feature                        | Description                                                 |
+| ------------------------------ | ----------------------------------------------------------- |
+| 🎯 **YOLOv8 Detection**         | Real-time object detection using Ultralytics YOLOv8n        |
+| 🚦 **Risk-Level Color Coding**  | RED = HIGH (<4m), ORANGE = MEDIUM (4–7m), GREEN = LOW (>7m) |
+| 🔊 **Smart Alert System**       | Audio + visual alerts with cooldown to prevent flooding     |
+| 📊 **Live Analytics Dashboard** | Real-time metrics: Pedestrians, Vehicles, Alerts, FPS       |
+| 📋 **Detection History Log**    | Timestamped log of every detection with distance & risk     |
+| 📥 **Export Reports**           | Download session data as CSV or formatted text report       |
+| ⚙️ **Configurable Thresholds**  | Adjustable confidence & proximity sliders from sidebar      |
+| 🎥 **Multi-Input Support**      | Image upload, Video upload, and Live Camera (local)         |
+
+---
+
+## 🏗️ System Architecture
+
+```
+User Input (Image / Video / Camera)
+            ↓
+   YOLOv8 Object Detection
+   (confidence threshold filter)
+            ↓
+  Pedestrian Distance Estimation
+  (bounding box height → meters)
+            ↓
+  Risk Classification Engine
+  HIGH(<4m) | MEDIUM(4-7m) | LOW(>7m)
+            ↓
+  Alert Decision Engine
+  (cooldown logic → no flooding)
+            ↓
+  Streamlit UI + Live Dashboard
+  + Detection Log + Export
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer                | Technology           |
+| -------------------- | -------------------- |
+| Language             | Python 3.11+         |
+| Deep Learning        | YOLOv8 (Ultralytics) |
+| Computer Vision      | OpenCV, Pillow       |
+| Web Interface        | Streamlit            |
+| Numerical Processing | NumPy, Pandas        |
+| Model Backend        | PyTorch              |
+| Deployment           | Streamlit Cloud      |
+
+---
+
+## 📁 Project Structure
+
+```
+VisionGuard/
+├── app.py                    # Main Streamlit application
+├── detector/
+│   ├── yolo_detector.py      # YOLOv8 detection + risk classification
+│   ├── distance.py           # Bounding box → distance estimation
+│   └── tracker.py            # Object tracking (optional)
+├── utils/
+│   ├── alerts.py             # Alert engine + cooldown logic
+│   └── summary.py            # Detection log + session analytics
+├── assets/
+│   └── alert.wav             # Alert sound file
+├── .streamlit/
+│   └── config.toml           # UI theme configuration
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## ⚡ How to Run
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/Vinay-Partap/VisionGuard.git
 cd VisionGuard
 ```
-### 2️⃣ Create & Activate Virtual Environment
+
+### 2. Create & Activate Virtual Environment
 ```bash
 python -m venv .venv
-.venv\Scripts\activate
+.venv\Scripts\activate        # Windows
+source .venv/bin/activate     # macOS/Linux
 ```
-### 3️⃣ Install Dependencies
+
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
-### 4️⃣ Run the Application
+
+### 4. Run the Application
 ```bash
 streamlit run app.py
 ```
----
-
-## Usage
-- Launch the application
-- Select Image or Video input
-- Upload a file
-- View detections, proximity alerts, and summary metrics in real time
 
 ---
 
-## Alert Logic
-- Alerts are triggered only when pedestrian distance falls below a predefined threshold
-- Cooldown mechanism prevents repeated alerts in video frames
-- Designed for continuous video processing without alert flooding
+## 📊 Alert Logic
+
+```
+distance < 4.0m  →  🔴 HIGH RISK   →  Alert triggered
+distance < 7.0m  →  🟠 MEDIUM RISK →  Alert triggered  
+distance ≥ 7.0m  →  🟢 LOW RISK    →  No alert
+```
+
+- Cooldown of **3 seconds** between alerts prevents flooding
+- All thresholds configurable via sidebar sliders
 
 ---
 
-## Project Category
-DeepTech / System-Based AI Project
+## 🔮 Future Scope
+
+- [ ] Vehicle speed estimation via tracking
+- [ ] Heatmap overlay showing pedestrian density zones
+- [ ] Custom danger zone (ROI) drawing on frame
+- [ ] Edge device deployment (Raspberry Pi / Jetson Nano)
+- [ ] Integration with smart traffic management systems
+- [ ] REST API endpoint via FastAPI
 
 ---
 
-## Future Scope
-- Live camera feed integration
-- Audio-based alerts
-- Vehicle speed estimation
-- Edge device deployment
-- Integration with smart traffic systems
+## 👨‍💻 Author
+
+**Vinay Partap**
+[![GitHub](https://img.shields.io/badge/GitHub-Vinay--Partap-181717?style=flat&logo=github)](https://github.com/Vinay-Partap)
 
 ---
 
-## License
+## 📄 License
+
 This project is developed for academic and research purposes.
 
 ---
-## 🚧 Ongoing Improvements
-- Alert cooldown optimization in progress
-- Sound trigger stabilization pending
+
+<div align="center">
+  <strong>⭐ If you found this project useful, please consider giving it a star!</strong>
+</div>
