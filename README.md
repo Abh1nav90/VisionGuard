@@ -77,6 +77,8 @@ VisionGuard/
 
 ```
 ---
+## 🚀 Live Demo
+👉 **[VisionGuard AI - Live App](https://visionguard-dwiz4twnypak6dkqkr96zz.streamlit.app)**
 
 ##  How to Run the Project
 
